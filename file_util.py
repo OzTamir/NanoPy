@@ -1,6 +1,8 @@
 import curses
 
 def save(stdscr, data, filename=None):
+	'''Save the data buffer to a file'''
+	# If the user is creating a new file, ask him for a name
 	if filename is None:
 		write_h = curses.LINES - 3
 		msg = 'File Name to Write: '
@@ -16,6 +18,8 @@ def save(stdscr, data, filename=None):
 		stdscr.move(write_h - 2, write_w)
 		curses.echo()
 		stdscr.refresh()
+	# If the user is happy with the changes, save it to file.
+	# If he regrets, return to the editing view
 	try:
 		if filename is None:
 			filename = stdscr.getstr().decode(encoding="utf-8")
@@ -26,5 +30,6 @@ def save(stdscr, data, filename=None):
 		return 1
 
 def read_file(filename):
+	'''Return the content of a file'''
 	with open(filename, 'r') as file:
 		return file.read()
