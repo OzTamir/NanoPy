@@ -2,7 +2,6 @@
 from __future__ import print_function
 import time
 import curses
-from curses.textpad import Textbox, rectangle
 import sys
 from file_util import save, read_file
 from cli import modified_alert, add_head, write_keys, init_term
@@ -37,7 +36,7 @@ def exit(stdscr, win, data, filename=None):
 def main(stdscr, data=None):
 	'''Main function, includes the input-output loop'''
 	# Fire up the CLI and set everything up
-	init_term(stdscr, data)
+	editwin = init_term(stdscr, data)
 	# Initial cursor positions
 	pos_h = 0
 	pos_w = 0
