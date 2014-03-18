@@ -1,4 +1,5 @@
 import curses
+from curses.textpad import rectangle
 
 
 # Key bindings
@@ -39,7 +40,7 @@ def write_keys(stdscr):
 	stdscr.refresh()
 
 def init_term(stdscr, data=None):
-	'''Initialize the terminal UI for NanoPy
+	'''Initialize the terminal UI for NanoPy'''
 	if data:
 		add_head(stdscr, data)
 	else:
@@ -49,3 +50,4 @@ def init_term(stdscr, data=None):
 	rectangle(stdscr, 1, 0, (curses.LINES - 4), (curses.COLS - 1))
 	stdscr.scrollok(True)
 	stdscr.refresh()
+	return editwin
